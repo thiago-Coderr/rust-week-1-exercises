@@ -7,8 +7,7 @@ pub fn extract_tx_version(raw_tx_hex: &str) -> Result<u32, String> {
 
     // Try to decode the first 8 characters (4 bytes)
     let version_hex = &raw_tx_hex[0..8];
-    let version_bytes = hex::decode(version_hex)
-        .map_err(|_| "Hex decode error".to_string())?;
+    let version_bytes = hex::decode(version_hex).map_err(|_| "Hex decode error".to_string())?;
 
     if version_bytes.len() != 4 {
         return Err("Decoded version length is not 4 bytes".to_string());
